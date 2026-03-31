@@ -1,41 +1,48 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/KuuIFSwK)
-# Weekly Coding #3 — Metro City Help Center
+# Metro City Help Center
 
-## Summary
-This homework uses one connected story to practice stack and queue behavior in Python.
+## 1. Summary
+This project simulates a help center system using stacks and queues.  
+It focuses on implementing LIFO (stack) and FIFO (queue) behaviors using Python data structures.
 
-Metro City Help Center needs a small support system for recent staff actions, waiting citizens, request-note checks, and service-line processing.
+---
 
-## How to run
-```bash
-pytest -q
-```
+## 2. Complexity
 
-## Complexity
-### `ActionStack.pop`
-- Time:
-- Why:
+- **ActionStack.pop** → O(1)  
+  Removing the last element from a list takes constant time.
 
-### `RequestQueue.dequeue`
-- Time:
-- Why:
+- **RequestQueue.dequeue** → O(1)  
+  deque.popleft() removes from the front in constant time.
 
-### `is_note_balanced`
-- Time:
-- Why:
+- **is_note_balanced** → O(n)  
+  We loop through each character once.
 
-### `process_request_line`
-- Time:
-- Why:
+- **process_request_line** → O(n)  
+  Each citizen is processed exactly once.
 
-## Edge-case checklist
-- [ ] empty action stack
-- [ ] empty request queue
-- [ ] empty string for `is_note_balanced`
-- [ ] note with no brackets
-- [ ] empty citizen list
+---
 
-## Assistance & sources
-- AI used? (Y/N):
-- What it helped with:
-- Other sources:
+## 3. Edge-case checklist
+
+- **Empty action stack**  
+  pop() and peek() return None safely.
+
+- **Empty request queue**  
+  dequeue() and peek() return None safely.
+
+- **Empty string in is_note_balanced**  
+  Returns True (nothing to match).
+
+- **No brackets in note**  
+  Returns True.
+
+- **Empty citizen list**  
+  Returns an empty list.
+
+---
+
+## 4. Assistance & Sources
+
+- AI used: Yes  
+- Helped with: Understanding stack/queue implementation and test structure  
+- Sources: Course materials and Python documentation
