@@ -66,43 +66,35 @@ class RequestQueue:
 def is_note_balanced(note: str) -> bool:
     """Return True if (), [], and {} are balanced correctly in a note."""
     stack = []
-    pairs = {')': '(', ']': '[', '}': '{'}
-
+    matching = {')': '(', ']': '[', '}': '{'}
     for char in note:
-        if char in "([{":
+        if char in '([{':
             stack.append(char)
-        elif char in ")]}":
-            if not stack or stack[-1] != pairs[char]:
+        elif char in ')]}':
+            if not stack or stack[-1] != matching[char]:
                 return False
             stack.pop()
-
     return len(stack) == 0
 
 
 def process_request_line(citizens: list[str]) -> list[str]:
     """Return citizens in the order they are served."""
     queue = RequestQueue()
-
-    for person in citizens:
-        queue.enqueue(person)
-
+    for citizen in citizens:
+        queue.enqueue(citizen)
     served = []
     while not queue.is_empty():
         served.append(queue.dequeue())
-
     return served
 
 
 def undo_recent_actions(actions: list[str], undo_count: int) -> list[str]:
     """Optional stretch: remove the most recent undo_count actions."""
     stack = ActionStack()
-
     for action in actions:
         stack.push(action)
-
     for _ in range(undo_count):
         if stack.is_empty():
             break
         stack.pop()
-
-    return stack.items
+    return stack.items.copy()
